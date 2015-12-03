@@ -1,0 +1,24 @@
+//
+//  PrefixHeader.pch
+//  weyoo
+//
+//  Created by 邹俊 on 15/11/19.
+//  Copyright © 2015年 尚娱网络. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "Appdelegate.h"
+#import "AppModel.h"
+#import "NetworkInstance.h"
+#import "BaseViewController.h"
+
+#import "Reachability.h"
+
+
+
+
+#import "MacroDefine.h"
+
+#endif /* PrefixHeader_pch */
