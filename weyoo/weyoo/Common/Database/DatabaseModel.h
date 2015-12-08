@@ -30,17 +30,12 @@
 /** 列类型 */
 @property (retain, readonly, nonatomic) NSMutableArray         *columeTypes;
 
-/**
- *  获取该类的所有属性
- */
+/** 获取该类的所有属性   */
 + (NSDictionary *)getPropertys;
-
 /** 获取所有属性，包括主键 */
 + (NSDictionary *)getAllProperties;
-
 /** 数据库中是否存在表 */
 + (BOOL)isExistInTable;
-
 /** 表中的字段*/
 + (NSArray *)getColumns;
 

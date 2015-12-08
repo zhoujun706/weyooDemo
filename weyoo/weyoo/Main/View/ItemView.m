@@ -3,10 +3,10 @@
 // Copyright (c) 2015 尚娱网络. All rights reserved.
 //
 
-#import "AppView.h"
+#import "ItemView.h"
 
 
-@implementation AppView {
+@implementation ItemView {
 
 }
 @end

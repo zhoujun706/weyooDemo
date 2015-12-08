@@ -480,7 +480,7 @@
 /** 查询全部数据 */
 + (NSArray *)findAll {
     NSLog(@"jkdb---%s",__func__);
-    NSMutableArray *users = [NSMutableArray array];
+    NSMutableArray *results = [NSMutableArray array];
     [DBQUEUE inDatabase:^(FMDatabase *db) {
         NSString *tableName = NSStringFromClass(self.class);
         NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@",tableName];
@@ -496,12 +496,12 @@
                     [model setValue:[NSNumber numberWithLongLong:[resultSet longLongIntForColumn:columeName]] forKey:columeName];
                 }
             }
-            [users addObject:model];
+            [results addObject:model];
             FMDBRelease(model);
         }
     }];
     
-    return users;
+    return results;
 }
 
 + (instancetype)findFirstWithFormat:(NSString *)format, ... {
@@ -543,7 +543,7 @@
 
 /** 通过条件查找数据 */
 + (NSArray *)findByCriteria:(NSString *)criteria {
-    NSMutableArray *users = [NSMutableArray array];
+    NSMutableArray *results = [NSMutableArray array];
     [DBQUEUE inDatabase:^(FMDatabase *db) {
         NSString *tableName = NSStringFromClass(self.class);
         NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ %@",tableName,criteria];
@@ -559,12 +559,12 @@
                     [model setValue:[NSNumber numberWithLongLong:[resultSet longLongIntForColumn:columeName]] forKey:columeName];
                 }
             }
-            [users addObject:model];
+            [results addObject:model];
             FMDBRelease(model);
         }
     }];
     
-    return users;
+    return results;
 }
 
 #pragma mark - util method

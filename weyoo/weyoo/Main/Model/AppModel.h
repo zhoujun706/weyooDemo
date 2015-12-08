@@ -11,6 +11,14 @@
 @interface AppModel : DatabaseModel
 
 @property (strong, nonatomic) NSString *appId;
+@property (strong, nonatomic) NSString *appIconUrl;
+@property (strong, nonatomic) NSData   *appIconData;
 @property (strong, nonatomic) NSString *appTitle;
+@property (strong, nonatomic) NSString *appUrl;
+@property (strong, nonatomic) NSString *appCategory;
+@property (strong, nonatomic) NSString *appSize;
+
+@property (assign, nonatomic) NSUInteger page;
+@property (assign, nonatomic) NSUInteger position;
 
 @end

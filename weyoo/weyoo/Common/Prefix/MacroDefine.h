@@ -67,8 +67,6 @@
 #define mDocuments  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 #define mLibrary  [(NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask,YES)) firstObject]
 
-//数据库文件路径
-#define DB_PATH [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/data.db"]
 //数据库操作对象
 #define DBQUEUE [DatabaseInstance getInstance].databaseQueue
 

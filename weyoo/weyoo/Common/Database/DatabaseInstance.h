@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "FMDB.h"
 
-
+//数据库文件路径
+#define DB_PATH [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/data.db"]
 
 @interface DatabaseInstance : NSObject
 
