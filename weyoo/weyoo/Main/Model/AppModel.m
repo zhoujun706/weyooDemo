@@ -10,4 +10,10 @@
 
 @implementation AppModel
 
+
++ (int)findTotalPage {
+    int totalPage = 0;
+    
+}
+
 @end

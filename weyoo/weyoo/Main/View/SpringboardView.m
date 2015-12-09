@@ -15,7 +15,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self initViews];
+        [self setup];
     }
     return self;
 }
@@ -23,14 +23,24 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initViews];
+        [self setup];
     }
     return self;
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self setup];
+}
+
+/**
+ * 初始化
+ */
+- (void)setup {
     [self initViews];
+    [self initDatas];
+    [self loadDataSource];
+    [self loadItems];
 }
 
 /**
@@ -50,9 +60,6 @@
         _scrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:_scrollView];
     }
-
-    [self initDatas];
-    [self loadDataSource];
 }
 
 /**
@@ -62,12 +69,29 @@
     if (!_itemModelArray) {
         _itemModelArray = [NSMutableArray array];
     }
-    if (!_itemCenterArray) {
-        _itemCenterArray = [NSMutableArray array];
-    }
     if (!_itemViewArray) {
         _itemViewArray = [NSMutableArray array];
     }
+    if (!_itemCenterArray) {
+        _itemCenterArray = [NSMutableArray array];
+    }
+}
+
+/**
+ * 清除旧数据
+ */
+- (void)clearOldData {
+    //移除旧应用模型数据源
+    [_itemModelArray removeAllObjects];
+    //清除旧的item试图
+    if (_itemViewArray.count != 0) {
+        for (ItemView *itemView in _itemViewArray) {
+            [itemView removeFromSuperview];
+        }
+        [_itemViewArray removeAllObjects];
+    }
+    //清除旧的item视图位置信息
+    [_itemCenterArray removeAllObjects];
 }
 
 
@@ -75,37 +99,54 @@
  * 获取数据源方法,加载数据源
  */
 - (void)loadDataSource {
-    //先移除旧数据
-    [_itemModelArray removeAllObjects];
     //增加最新数据库中数据
     [_itemModelArray addObjectsFromArray:[AppModel findAll]];
     NSLog(@"%@", _itemModelArray);
-
-    //根据数据源配置items
-    [self initItems];
 }
 
 /**
- * 初始化item的View
+ * 加载 itemView 以及相关 位置信息和手势判断
  */
-- (void)initItems {
+- (void)loadItems {
     if (_itemModelArray.count == 0) {
         return;
     }
+    [self loadItemViews];
+}
 
+/**
+ * 根据数据源加载item视图
+ */
+- (void)loadItemViews {
     for (int i = 0; i < _itemModelArray.count; i++) {
         AppModel *appModel = _itemModelArray[i];
-        ItemView *itemView = [[ItemView alloc] init];
-        itemView.bounds.size = CGSizeMake(kItemWidth, kItemHeight);
-        itemView.appModel = appModel;
+        [_itemViewArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            ItemView *beforeItem = _itemViewArray[idx];
+            if (_itemViewArray.count != 0 &&
+                    beforeItem.appModel.page == appModel.page &&
+                    beforeItem.appModel.position == appModel.position) {
+                [beforeItem addSubItemWithModel:appModel];
+            } else {
+                ItemView *itemView = [[ItemView alloc] init];
+                itemView.bounds = CGRectMake(0, 0, kItemWidth, kItemHeight);
+                itemView.appModel = appModel;
+                [_scrollView addSubview:itemView];
+                [_itemViewArray addObject:itemView];
+                if (appModel.isFolder == 1) {
+                    [itemView becomeFolder];
+                }
+            }
+        }];
     }
 }
 
+#pragma mark #########################布局相关#####################################
 /**
  * 调整各控件的frame
  */
 - (void)layoutSubviews {
     [super layoutSubviews];
+
 
 }
 
