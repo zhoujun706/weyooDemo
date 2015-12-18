@@ -6,8 +6,7 @@
 //  Copyright © 2015年 尚娱网络. All rights reserved.
 //
 
-#import "DatabaseModel.h"
-#import "DatabaseInstance.h"
+
 #import <objc/runtime.h>
 
 @implementation DatabaseModel

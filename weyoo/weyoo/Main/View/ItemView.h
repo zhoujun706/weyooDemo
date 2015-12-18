@@ -3,6 +3,9 @@
 // Copyright (c) 2015 尚娱网络. All rights reserved.
 //
 
+#define kIconWidth 60
+#define kIconHeight 60
+
 typedef NS_ENUM(NSInteger, ItemViewType) {
     ItemViewTypeApp,
     ItemViewTypeFolder
@@ -13,13 +16,20 @@ typedef NS_ENUM(NSInteger, ItemViewType) {
 }
 
 //数据 (单个app)
-@property (strong, nonatomic) AppModel *appModel;
-@property (assign, nonatomic) ItemViewType itemViewType;
+@property (strong, nonatomic) AppModel      *appModel;
+@property (assign, nonatomic) ItemViewType  itemViewType;
 
 //数据 (文件)
 @property (strong, nonatomic) NSMutableArray *appModels;
 
 //UI
+@property (strong, nonatomic) UIImageView   *folderBorderImageView;         //处理变成文件夹的边框动画
+@property (strong, nonatomic) UIImageView   *iconImageView;
+@property (strong, nonatomic) UILabel       *titleLabel;
+@property (strong, nonatomic) UIButton      *deleteButton;
+
+//UI
+
 
 
 

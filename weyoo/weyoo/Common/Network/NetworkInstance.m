@@ -38,9 +38,9 @@
         NSLog(@"网络未连接");
         return;
     }
-    [_manager GET:urlString parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    [_manager GET:urlString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(task);
     }];
 }
@@ -53,9 +53,9 @@
         NSLog(@"网络未连接");
         return;
     }
-    [_manager POST:urlString parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+    [_manager POST:urlString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(task);
     }];
 }

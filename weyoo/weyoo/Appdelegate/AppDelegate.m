@@ -56,8 +56,8 @@
     appModel4.appUrl = @"https://wyqc.tmall.com/shop/view_shop.htm?spm=a220m.1000862.1000730.2.5WzCTh&amp;user_number_id=2653557133&amp;rn=9113d7386524c8d846def3085fb379c9";
     appModel4.appCategory = @"购物·特价";
     appModel4.appSize = @"14";
-    appModel4.page = 0;
-    appModel4.position = 3;
+    appModel4.page = 1;
+    appModel4.position = 0;
     [appModel4 save];
 
 }

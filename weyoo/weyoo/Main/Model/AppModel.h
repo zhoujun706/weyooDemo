@@ -24,11 +24,14 @@
 @property (assign, nonatomic) NSUInteger isFolder;
 
 
-/** 查找在当前设备下放置所以app的页数*/
-+ (int)findTotalPage;
+/** 查找在当前设备下放置所有应用的页数*/
+//+ (int)findTotalPage;
+
+/** 查找当前页的数据*/
++ (NSArray *)findAppModelsFromPage:(int)page;
 
 /** 读取所有应用的id*/
-+ (NSString *)findAllAppIds;
+//+ (NSString *)findAllAppIds;
 
 
 @end

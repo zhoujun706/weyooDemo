@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DatabaseInstance.h"
 
 
-
+//数据库操作对象
+#define DBQUEUE [DatabaseInstance getInstance].databaseQueue
 
 /** SQLite五种数据类型 */
 #define SQLTEXT     @"TEXT"

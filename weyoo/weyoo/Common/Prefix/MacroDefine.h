@@ -67,8 +67,6 @@
 #define mDocuments  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 #define mLibrary  [(NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask,YES)) firstObject]
 
-//数据库操作对象
-#define DBQUEUE [DatabaseInstance getInstance].databaseQueue
 
 //网络操作对象
 #define NETMANAGER [NetworkInstance getInstance]

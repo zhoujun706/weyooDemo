@@ -7,13 +7,15 @@
 //
 
 #import "AppModel.h"
+#import "SpringboardView.h"
 
 @implementation AppModel
 
 
-+ (int)findTotalPage {
-    int totalPage = 0;
-    
+
++ (NSArray *)findAppModelsFromPage:(int)page {
+    NSString *criteria = [NSString stringWithFormat:@"where page=%d", page];
+    return [self findByCriteria:criteria];
 }
 
 @end
